@@ -1,33 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : NetworkBehaviour
 {
+    public Shooting parent;
+
+    //[SerializeField] private GameObject hitParticle;
+    [SerializeField] private float shootForce;
+
     public float damage;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-           
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 
-    // private void OnCollisionEnter2D (Collider2D other) 
-    // {
-    //     Debug.Log(other.name);
-    //     Destroy(gameObject);
-    // }
-    
-    private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(other.name);
-        Destroy(gameObject);
-        
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        //GameObject hitImpact = (Instantiate(hitParticle, transform.position, Quaternion.identity));
+        //hitImpact.transform.localEulerAngles = new Vector3(0f, 0f, -90f);
+        if (!IsOwner) return;
+        //Destroy(gameObject);
+        parent.DestroyServerRpc();
     }
 }
