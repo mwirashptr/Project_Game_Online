@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Power Up
+  - Coin Detector
+  - Enemy Bubble
   layers:
   - Default
   - TransparentFX

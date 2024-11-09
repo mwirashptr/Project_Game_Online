@@ -7,6 +7,7 @@ public class Shooting : NetworkBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
+    public float damageBullet = 7;
 
     [SerializeField] private List<GameObject> bullets = new List<GameObject>();
 
@@ -35,10 +36,20 @@ public class Shooting : NetworkBehaviour
         }
     }
 
+    public void IncreaseBullet()
+    {
+        damageBullet *= 2;
+    }
+
     [ServerRpc]
     private void ShootServerRpc()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        if(bulletScript != null)
+        {
+            bulletScript.SetDamage(damageBullet);
+        }
         bullets.Add(bullet);
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();

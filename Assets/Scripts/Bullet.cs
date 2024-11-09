@@ -10,7 +10,7 @@ public class Bullet : NetworkBehaviour
     //[SerializeField] private GameObject hitParticle;
     [SerializeField] private float shootForce;
 
-    public float damage;
+    private float damage;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -22,6 +22,7 @@ public class Bullet : NetworkBehaviour
     // Update is called once per frame
     private void Update()
     {
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -30,6 +31,25 @@ public class Bullet : NetworkBehaviour
         //hitImpact.transform.localEulerAngles = new Vector3(0f, 0f, -90f);
         if (!IsOwner) return;
         //Destroy(gameObject);
+
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            EnemyBehaviour enemy = other.GetComponent<EnemyBehaviour>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+        }
+        else{
+            Destroy(gameObject, 1f);
+        }
+
         parent.DestroyServerRpc();
+    }
+
+    public void SetDamage(float damage)
+    {
+        this.damage = damage;
     }
 }

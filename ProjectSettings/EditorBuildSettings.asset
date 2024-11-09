@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: G:/icha/Github/Multiplayer_Game/Multiplayer Game/Assets/Scenes/SampleScene.unity
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Ipanturu.unity
+    path: Assets/Scenes/MainMenu.unity
+    guid: 0e4aefd77966a7a4ca60111dc3e3d062
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/In-Game.unity
+    guid: fb57f6830462a0142bbac94b21f42fc4
   m_configObjects: {}

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -4951261944219229115}
   m_Layer: 0
   m_Name: Player 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,6 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   rb: {fileID: 181704029349023633}
+  isReady: 0
 --- !u!114 &-4951261944219229115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,5 +275,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 3516167196308464973}
   bulletPrefab: {fileID: 1465521048215456369, guid: 655ee3204c467ff42ad7e6b76c6570bd, type: 3}
+  bullets: []
   bulletForce: 20
   fireRate: 0.25
